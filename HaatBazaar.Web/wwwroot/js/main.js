@@ -86,6 +86,14 @@ function updateLocation(userLocations, radius) {
       );
       if (distance <= radius * 1000) {
         itemsFound = true; // Set the flag to true if an item is found
+        var ratingHtml = `
+          <div class="rating">
+            <span class="star" data-rating="5">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="1">&#9733;</span>
+          </div>`;
         var userMarker = L.marker([location.latitude, location.longitude])
           .addTo(map)
           .bindPopup(
@@ -100,6 +108,8 @@ function updateLocation(userLocations, radius) {
               location.unit +
               "<br>Price: Rs: " +
               location.price +
+              "<br>Rating: " +
+              ratingHtml +
               "<br><br><a href='/connection/index?connectionId=" +
               location.connectId +
               "'>Connect</a>"
